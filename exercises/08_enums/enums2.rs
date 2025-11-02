@@ -7,11 +7,35 @@ struct Point {
 #[derive(Debug)]
 enum Message {
     // TODO: Define the different variants used below.
+    Resize{
+        width:u32,
+        height:u32
+    },
+    Move(Point),
+    Echo(String),
+    ChangeColor(u64, u64, u64),
+    Quit,
 }
 
 impl Message {
     fn call(&self) {
-        println!("{self:?}");
+        match self{
+            Message::Resize{width,height}=>{
+                println!("Rezize complete");
+            }
+            Message::Move(p)=>{
+                println!("Move complete");
+            }
+            Message::Echo(msg)=>{
+                println!("Hello");
+            }
+            Message::ChangeColor(r,b,g)=>{
+                println!("r g b");
+            }
+            Message::Quit=>{
+                println!("Quit");
+            }
+        }
     }
 }
 
